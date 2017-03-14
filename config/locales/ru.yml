@@ -1,8 +1,18 @@
 ---
 ru:
+  layouts:
+    navbar:
+      cv: "Резюме"
+      download: "Скачать"
+      export_to: "Экспортировать в "
   cv:
     show:
-      full_name: "Полное имя"
+      summary: "Краткий итог"
+      personal_skills: "Личные качества"
+      technical_skills: "Технические навыки"
+      qualification: "Квалификация"
+      educations: "Образование"
+      experiences: "Опыт работы"
   activerecord:
     errors:
       messages:

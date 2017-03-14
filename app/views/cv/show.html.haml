@@ -1,0 +1,100 @@
+
+.container
+  = render :partial => 'layouts/navbar'
+
+  -# Header
+  .row
+    .col-xs-12.text-center
+      %h1.colored= @cv.cv_trans[0].full_name
+  %hr.gradient
+  .row
+    .col-xs-12.text-center
+      %span.text-nowrap
+        %i.fa.fa-address-card-o.fa-fw.fa-md
+        = @cv.cv_trans[0].address
+      %span= '|'
+      %span.text-nowrap
+        %i.fa.fa-phone.fa-fw.fa-md
+        = @cv.phone
+      %span= '|'
+      %span.text-nowrap
+        %i.fa.fa-envelope-o.fa-fw.fa-md
+        = mail_to @cv.email
+      %span= '|'
+      %span.text-nowrap
+        %i.fa.fa-skype.fa-fw.fa-md
+        = @cv.skype
+
+  -# Summary
+  - if @cv.cv_trans[0].summary.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.summary')
+    .row
+      .col-xs-12.text-justify
+        %p
+          %big= @cv.cv_trans[0].summary
+
+  -# Personal skills
+  - if @cv.cv_trans[0].personal_skills.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.personal_skills')
+    .row
+      .col-xs-12.text-justify
+        %p
+          %big= @cv.cv_trans[0].personal_skills
+
+  -# Technical skills
+  - if @cv.cv_trans[0].technical_skills.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.technical_skills')
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].technical_skills.each do |k, v|
+            %li
+              %big #{k}: #{v}
+
+  -# Qualification
+  - if @cv.cv_trans[0].qualification.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.qualification')
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].qualification.each do |v|
+            %li
+              %big= v
+
+  -# Experiences
+  - if @cv.cv_trans[0].experiences.count > 0
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.experiences')
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].experiences.each do |exs|
+            %li
+              %big= exs
+
+  -# Educations
+  - if @cv.cv_trans[0].educations.count > 0
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.educations')
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].educations.each do |edn|
+            %li
+              %big= edn

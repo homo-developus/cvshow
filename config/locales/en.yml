@@ -1,5 +1,15 @@
 ---
 en:
+  layouts:
+    navbar:
+      cv: "Curriculum Vitae"
+      download: "Download"
+      export_to: "Export to "
   cv:
     show:
-      full_name: "Full Name"
+      summary: "Summary"
+      personal_skills: "Personal skills"
+      technical_skills: "Technical skills"
+      qualification: "Qualification"
+      educations: "Educations"
+      experiences: "Experiences"

@@ -1,0 +1,42 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %span.navbar-brand
+        %ol.breadcrumb
+          %li= t('.cv')
+          %li.active= @cv.cv_trans[0].full_name
+    #myNavbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-download.fa-fw.fa-lg
+            = t('.download')
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to '#' do
+                %i.fa.fa-file-pdf-o.fa-fw
+                = t('.export_to') + 'PDF'
+            %li
+              = link_to '#' do
+                %i.fa.fa-code.fa-fw
+                = t('.export_to') + 'XML'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-globe.fa-fw.fa-lg
+            = @locale
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to locale: 'en' do
+                %span.lang-sm.lang-lbl-full{:lang => "en"}
+            %li
+              = link_to locale: 'ru' do
+                %span.lang-sm.lang-lbl-full{:lang => "ru"}
+            -#%li
+            -#  = link_to locale: 'ua' do
+            -#    %span.lang-sm.lang-lbl-full{:lang => "uk"}

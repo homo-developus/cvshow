@@ -1,3 +1,42 @@
 // Place all the styles related to the cv controller here.
-// They will automatically be included in application.css.
+// They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-an-r: 'AnonymousProRegular', sans-serif;
+$font-an-b: 'AnonymousProBold', sans-serif;
+$primary-bg-color: #003900;
+$primary-font-color: #004c00;
+$gradient-start-color: #f0f0f0;
+
+@mixin background-image-gradient($params...) {
+  background-image: -webkit-linear-gradient($params);
+  background-image: -moz-linear-gradient($params);
+  background-image: -ms-linear-gradient($params);
+  background-image: -o-linear-gradient($params);
+}
+
+body {
+  padding-top: 50px;
+  font-family: $font-an-r;
+}
+
+.navbar {
+  background-color: $primary-bg-color;
+
+}
+
+.colored {
+  font-family: $font-an-b;
+  color: $primary-font-color;
+}
+
+hr.gradient {
+  border: 0;
+  height: 1px;
+  //@include background-image-gradient(left, $gradient-start-color, $primary-bg-color, $gradient-start-color);
+  @include background-image-gradient(left, $primary-bg-color, $gradient-start-color);
+}
+
+.breadcrumb {background: none; border: 0px; display: inline;}
+.breadcrumb li {font-size: 16px;}
+.breadcrumb>li+li:before {color: rgba(204, 204, 204, 1); content: "\203A\00a0";}
