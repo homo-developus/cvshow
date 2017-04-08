@@ -1,0 +1,62 @@
+!!! XML
+%cv
+  %token= @cv.token
+  %birthday= @cv.birthday
+  %email= @cv.email
+  %phone= @cv.phone
+  %skype= @cv.skype
+  %cv_trans
+    - @cv.cv_trans.each do |cvt|
+      %cv_tran
+        %tran_lang= cvt.tran_lang
+        %full_name= cvt.full_name
+        %position= cvt.position
+        %marital_status= cvt.marital_status
+        %address= cvt.address
+        %summary= cvt.summary
+        %personal_skills= cvt.personal_skills
+        %technical_skills
+          - cvt.technical_skills.each do |k, v|
+            %technical_skill
+              %key= k
+              %value= v
+        %qualifications
+          - cvt.qualification.each do |v|
+            %qualification= v
+        %links
+          - cvt.links.each do |k, v|
+            %link
+              %key= k
+              %value= v
+        %languages
+          - cvt.languages.each do |k, v|
+            %language
+              %key= k
+              %value= v
+        %educations
+          - cvt.educations.each do |edn|
+            %education
+              %degree= edn.degree
+              %specialty= edn.specialty
+              %institution= edn.institution
+              %year= edn.year
+              %institution_address= edn.institution_address
+        %experiences
+          - cvt.experiences.each do |exs|
+            %experience
+              %started_at= exs.started_at
+              %position= exs.position
+              %company= exs.company
+              %company_site= exs.company_site
+              %company_address= exs.company_address
+              %duties
+                - if exs.duties.present?
+                  - exs.duties.each do |v|
+                    %dutie= v
+              %projects
+                - exs.projects.each do |prj|
+                  %project
+                    %name= prj.name
+                    %description= prj.description
+                    %link= prj.link
+                    %technologies= prj.technologies

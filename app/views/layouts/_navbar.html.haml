@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse
+%nav.navbar.navbar-inverse.navbar-fixed-top
   .container-fluid
     .navbar-header
       %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
@@ -18,11 +18,11 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to '#' do
+              = link_to(options = {format: :pdf}, html_options = {target: '_blank'}) do
                 %i.fa.fa-file-pdf-o.fa-fw
                 = t('.export_to') + 'PDF'
             %li
-              = link_to '#' do
+              = link_to(options = {format: :xml}, html_options = {target: '_blank'}) do
                 %i.fa.fa-code.fa-fw
                 = t('.export_to') + 'XML'
         %li.dropdown

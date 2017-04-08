@@ -13,6 +13,9 @@ ru:
       qualification: "Квалификация"
       educations: "Образование"
       experiences: "Опыт работы"
+      duties: "Обязанности: "
+      projects: "Проекты: "
+      technologies: "Использованные технологии: "
   activerecord:
     errors:
       messages:

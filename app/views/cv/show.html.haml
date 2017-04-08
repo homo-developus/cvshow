@@ -1,16 +1,15 @@
-
-.container
-  = render :partial => 'layouts/navbar'
-
+= render :partial => 'layouts/navbar'
+.container-fluid
   -# Header
   .row
     .col-xs-12.text-center
       %h1.colored= @cv.cv_trans[0].full_name
+      %h4= @cv.cv_trans[0].position
   %hr.gradient
   .row
     .col-xs-12.text-center
       %span.text-nowrap
-        %i.fa.fa-address-card-o.fa-fw.fa-md
+        %i.fa.fa-home.fa-fw.fa-md
         = @cv.cv_trans[0].address
       %span= '|'
       %span.text-nowrap
@@ -30,7 +29,7 @@
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.summary')
+        %h4.colored= t('.summary').upcase
     .row
       .col-xs-12.text-justify
         %p
@@ -41,7 +40,7 @@
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.personal_skills')
+        %h4.colored= t('.personal_skills').upcase
     .row
       .col-xs-12.text-justify
         %p
@@ -52,7 +51,7 @@
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.technical_skills')
+        %h4.colored= t('.technical_skills').upcase
     .row
       .col-xs-12.text-justify
         %ul
@@ -65,7 +64,7 @@
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.qualification')
+        %h4.colored= t('.qualification').upcase
     .row
       .col-xs-12.text-justify
         %ul
@@ -78,23 +77,58 @@
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.experiences')
-    .row
-      .col-xs-12.text-justify
-        %ul
-          - @cv.cv_trans[0].experiences.each do |exs|
-            %li
-              %big= exs
+        %h4.colored= t('.experiences').upcase
+    - @cv.cv_trans[0].experiences.sort_by(&:started_at).reverse.each do |exs|
+      .row.bottom-buffer
+        .col-sm-3.text-left
+          %big #{l(exs.started_at.to_date)} &mdash; #{(exs.finished_at.nil? ? 'Now' : l(exs.finished_at.to_date))}
+        .col-sm-9.text-justify
+          %big
+            %strong= exs.position
+            %br
+            %span
+              - if exs.company_site
+                %strong= link_to exs.company, "http://#{exs.company_site}", target: '_blank'
+              - else
+                %strong= exs.company
+              - if exs.company_address.present?
+                &mdash; #{exs.company_address}
+          - if exs.duties.present?
+            %h4= t('.duties')
+            %ul
+              - exs.duties.each do |v|
+                %li
+                  %big= v
+          - if exs.projects.length > 0
+            %h4= t('.projects')
+            %ul
+              - exs.projects.sort_by(&:id).each do |prj|
+                %li
+                  - if prj.link.present?
+                    %big= link_to prj.name, "http://#{prj.link}", target: '_blank'
+                  - else
+                    %big= prj.name
+                  - if prj.description.present?
+                    %br
+                    = prj.description
+                  - if prj.technologies.present?
+                    %br
+                    = t('.technologies')
+                    = prj.technologies
 
   -# Educations
   - if @cv.cv_trans[0].educations.count > 0
     %hr.gradient
     .row
       .col-xs-12.text-left
-        %h4.colored= t('.educations')
-    .row
-      .col-xs-12.text-justify
-        %ul
-          - @cv.cv_trans[0].educations.each do |edn|
-            %li
-              %big= edn
+        %h4.colored= t('.educations').upcase
+    - @cv.cv_trans[0].educations.sort_by(&:year).reverse.each do |edn|
+      .row.bottom-buffer
+        .col-sm-1.text-left
+          %big= edn.year
+        .col-sm-11.text-justify
+          %big
+            %strong= edn.degree + (edn.specialty ? ': ' : '')
+            = edn.specialty
+            %br
+            = edn.institution + (edn.institution_address.nil? ? '' : ' - ' + edn.institution_address)

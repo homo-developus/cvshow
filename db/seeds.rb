@@ -11,6 +11,7 @@ cv = Cv.create(birthday: 30.years.ago, email: 'test@email.com', phone: '+1(234)5
 cv_en = cv.cv_trans.create(
     tran_lang: :en,
     full_name: 'Tom Smith',
+    position: 'Ruby on Rails Developer',
     marital_status: 'married',
     address: 'Earth',
     summary: 'Extremely well-trained and skilled Ruby on Rails Developer with vast experience in web design for a variety of corporate clients. Adept at adjusting work pace to satisfy evolving client needs. Superb record of project completion at or well before deadlines.',
@@ -38,6 +39,7 @@ cv_en = cv.cv_trans.create(
 cv_ru = cv.cv_trans.create(
     tran_lang: :ru,
     full_name: 'Том Смит',
+    position: 'Разработчик Ruby on Rails',
     marital_status: 'женат',
     address: 'Земля',
     summary: 'Супер специалист :)',
