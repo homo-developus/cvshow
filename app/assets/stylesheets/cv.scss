@@ -2,6 +2,22 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+  font-family: 'AnonymousProRegular';
+  src: font-url('AnonymousProRegular/AnonymousProRegular.eot');
+  src: font-url('AnonymousProRegular/AnonymousProRegular.eot') format('embedded-opentype'), font-url('AnonymousProRegular/AnonymousProRegular.woff') format('woff'), font-url('AnonymousProRegular/AnonymousProRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AnonymousProBold';
+  src: font-url('AnonymousProBold/AnonymousProBold.eot');
+  src: font-url('AnonymousProBold/AnonymousProBold.eot') format('embedded-opentype'), font-url('AnonymousProBold/AnonymousProBold.woff') format('woff'), font-url('AnonymousProBold/AnonymousProBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 $font-an-r: 'AnonymousProRegular', sans-serif;
 $font-an-b: 'AnonymousProBold', sans-serif;
 $primary-bg-color: #003900;
