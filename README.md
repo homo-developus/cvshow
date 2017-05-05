@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+CVShow (Curriculum vitae show) - is a training project on RoR, which I use to learn new features.
 
-Things you may want to cover:
+Used features:
+Ruby 2.4.0
+Rails 5.0.1
+PostgreSQL
+Prawn PDF generation library 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can see current worked version on Heroku: https://cvshow.herokuapp.com/en/cv/6a9168

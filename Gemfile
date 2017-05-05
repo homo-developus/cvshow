@@ -58,5 +58,6 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem "haml-rails", "~> 0.9"
 gem 'prawn'
 gem 'prawn-icon'
+gem 'nokogiri'
 
 ruby '2.4.0'

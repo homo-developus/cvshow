@@ -19,9 +19,11 @@ class Cv < ApplicationRecord
   protected
 
   def generate_token
-    self.token = loop do
-      random_token = SecureRandom.hex(3)
-      break random_token unless Cv.exists?(token: random_token)
+    if self.token.nil?
+      self.token = loop do
+        random_token = SecureRandom.hex(3)
+        break random_token unless Cv.exists?(token: random_token)
+      end
     end
   end
 end

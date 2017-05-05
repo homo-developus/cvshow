@@ -16,6 +16,8 @@ ru:
       duties: "Обязанности: "
       projects: "Проекты: "
       technologies: "Использованные технологии: "
+      languages: "Языки"
+      links: "Полезные ссылки"
   activerecord:
     errors:
       messages:

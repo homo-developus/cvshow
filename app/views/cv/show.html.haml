@@ -57,7 +57,7 @@
         %ul
           - @cv.cv_trans[0].technical_skills.each do |k, v|
             %li
-              %big #{k}: #{v}
+              %big #{k.capitalize}: #{v}
 
   -# Qualification
   - if @cv.cv_trans[0].qualification.present?
@@ -132,3 +132,31 @@
             = edn.specialty
             %br
             = edn.institution + (edn.institution_address.nil? ? '' : ' - ' + edn.institution_address)
+
+  -# Links
+  - if @cv.cv_trans[0].links.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.links').upcase
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].links.each do |k, v|
+            %li
+              %big #{k.capitalize}:
+              = link_to v, v, target: '_blank'
+
+  -# Languages
+  - if @cv.cv_trans[0].languages.present?
+    %hr.gradient
+    .row
+      .col-xs-12.text-left
+        %h4.colored= t('.languages').upcase
+    .row
+      .col-xs-12.text-justify
+        %ul
+          - @cv.cv_trans[0].languages.each do |k, v|
+            %li
+              %big #{k.capitalize}: #{v}
+
