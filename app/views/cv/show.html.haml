@@ -4,7 +4,7 @@
   .row
     .col-xs-12.text-center
       %h1.colored= @cv.cv_trans[0].full_name
-      %h4= @cv.cv_trans[0].position
+      %h3= @cv.cv_trans[0].position
   %hr.gradient
   .row
     .col-xs-12.text-center
@@ -22,7 +22,7 @@
       %span= '|'
       %span.text-nowrap
         %i.fa.fa-skype.fa-fw.fa-md
-        = @cv.skype
+        = link_to @cv.skype, "skype:#{@cv.skype}?call"
 
   -# Summary
   - if @cv.cv_trans[0].summary.present?
@@ -60,7 +60,7 @@
               %big #{k.capitalize}: #{v}
 
   -# Qualification
-  - if @cv.cv_trans[0].qualification.present?
+  - if @cv.cv_trans[0].qualifications.present?
     %hr.gradient
     .row
       .col-xs-12.text-left
@@ -68,7 +68,7 @@
     .row
       .col-xs-12.text-justify
         %ul
-          - @cv.cv_trans[0].qualification.each do |v|
+          - @cv.cv_trans[0].qualifications.each do |v|
             %li
               %big= v
 
@@ -80,9 +80,9 @@
         %h4.colored= t('.experiences').upcase
     - @cv.cv_trans[0].experiences.sort_by(&:started_at).reverse.each do |exs|
       .row.bottom-buffer
-        .col-sm-3.text-left
-          %big #{l(exs.started_at.to_date)} &mdash; #{(exs.finished_at.nil? ? 'Now' : l(exs.finished_at.to_date))}
-        .col-sm-9.text-justify
+        .col-sm-2.text-left
+          = "#{l(exs.started_at.to_date)} - #{(exs.finished_at.nil? ? 'Now' : l(exs.finished_at.to_date))}"
+        .col-sm-10.text-justify
           %big
             %strong= exs.position
             %br
@@ -109,8 +109,9 @@
                   - else
                     %big= prj.name
                   - if prj.description.present?
-                    %br
-                    = prj.description
+                    - prj.description.split('{{BR}}').each do |descr|
+                      %br
+                      = descr
                   - if prj.technologies.present?
                     %br
                     = t('.technologies')
@@ -125,7 +126,7 @@
     - @cv.cv_trans[0].educations.sort_by(&:year).reverse.each do |edn|
       .row.bottom-buffer
         .col-sm-1.text-left
-          %big= edn.year
+          = edn.year
         .col-sm-11.text-justify
           %big
             %strong= edn.degree + (edn.specialty ? ': ' : '')

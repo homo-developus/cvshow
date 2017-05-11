@@ -1,23 +1,23 @@
 ---
-ru:
+ua:
   layouts:
     navbar:
       cv: "Резюме"
-      download: "Скачать"
-      export_to: "Экспортировать в "
+      download: "Завантажити"
+      export_to: "Експортувати в "
   cv:
     show:
-      summary: "Краткий итог"
-      personal_skills: "Личные качества"
-      technical_skills: "Технические навыки"
-      qualification: "Квалификация"
-      educations: "Образование"
-      experiences: "Опыт работы"
-      duties: "Обязанности: "
-      projects: "Проекты: "
-      technologies: "Стек технологий: "
-      languages: "Языки"
-      links: "Полезные ссылки"
+      summary: "Короткий підсумок"
+      personal_skills: "Особисті якості"
+      technical_skills: "Технічні навички"
+      qualification: "Кваліфікація"
+      educations: "Освіта"
+      experiences: "Доствід праці"
+      duties: "Обов'язки: "
+      projects: "Проекти: "
+      technologies: "Стек технологій: "
+      languages: "Мови"
+      links: "Корисні посилання"
   activerecord:
     errors:
       messages:

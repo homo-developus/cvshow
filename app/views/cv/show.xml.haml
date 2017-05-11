@@ -21,8 +21,9 @@
               %key= k
               %value= v
         %qualifications
-          - cvt.qualification.each do |v|
-            %qualification= v
+          - if cvt.qualifications.present?
+            - cvt.qualifications.each do |v|
+              %qualification= v
         %links
           - cvt.links.each do |k, v|
             %link
@@ -45,6 +46,7 @@
           - cvt.experiences.each do |exs|
             %experience
               %started_at= exs.started_at
+              %finished_at= exs.finished_at
               %position= exs.position
               %company= exs.company
               %company_site= exs.company_site
